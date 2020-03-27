@@ -67,6 +67,7 @@
             this.btn_logout.TabIndex = 30;
             this.btn_logout.Text = "Logout";
             this.btn_logout.UseVisualStyleBackColor = true;
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
             // btn_edit
             // 
@@ -77,6 +78,7 @@
             this.btn_edit.TabIndex = 29;
             this.btn_edit.Text = "Edit Profile";
             this.btn_edit.UseVisualStyleBackColor = true;
+            this.btn_edit.Click += new System.EventHandler(this.btn_edit_Click);
             // 
             // pictureBox_homePic
             // 
@@ -103,6 +105,7 @@
             this.Controls.Add(this.pictureBox_homePic);
             this.Name = "home_form";
             this.Text = "Home ";
+            this.Load += new System.EventHandler(this.home_form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_homePic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

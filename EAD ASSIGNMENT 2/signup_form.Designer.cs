@@ -54,6 +54,7 @@
             this.label_login = new System.Windows.Forms.Label();
             this.label_password = new System.Windows.Forms.Label();
             this.label_name = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_profile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,6 +67,7 @@
             this.button_upload.TabIndex = 52;
             this.button_upload.Text = "Upload";
             this.button_upload.UseVisualStyleBackColor = true;
+            this.button_upload.Click += new System.EventHandler(this.button_upload_Click);
             // 
             // pictureBox_profile
             // 
@@ -87,6 +89,7 @@
             this.button_cancel.TabIndex = 50;
             this.button_cancel.Text = "Cancel";
             this.button_cancel.UseVisualStyleBackColor = true;
+            this.button_cancel.Click += new System.EventHandler(this.button_cancel_Click);
             // 
             // btn_create
             // 
@@ -97,6 +100,7 @@
             this.btn_create.TabIndex = 49;
             this.btn_create.Text = "Create";
             this.btn_create.UseVisualStyleBackColor = true;
+            this.btn_create.Click += new System.EventHandler(this.btn_create_Click);
             // 
             // label4
             // 
@@ -228,6 +232,8 @@
             this.textBox_password.Size = new System.Drawing.Size(178, 24);
             this.textBox_password.TabIndex = 35;
             this.textBox_password.UseSystemPasswordChar = true;
+            this.textBox_password.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox_password_MouseDown);
+            this.textBox_password.MouseUp += new System.Windows.Forms.MouseEventHandler(this.textBox_password_MouseUp);
             // 
             // textBox_login
             // 
@@ -305,6 +311,11 @@
             this.label_name.TabIndex = 27;
             this.label_name.Text = "Name";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "7";
+            this.openFileDialog1.Filter = "JPG | *jpg";
+            // 
             // signup_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,6 +351,7 @@
             this.Controls.Add(this.label_name);
             this.Name = "signup_form";
             this.Text = "New User";
+            this.Load += new System.EventHandler(this.signup_form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_profile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -374,5 +386,6 @@
         private System.Windows.Forms.Label label_login;
         private System.Windows.Forms.Label label_password;
         private System.Windows.Forms.Label label_name;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

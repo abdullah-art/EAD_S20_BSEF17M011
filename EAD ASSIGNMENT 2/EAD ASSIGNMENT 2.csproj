@@ -142,5 +142,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Assignment.BAL\Assignment.BAL.csproj">
+      <Project>{f9f55fc3-076c-4f6a-a577-cc415edbfe49}</Project>
+      <Name>Assignment.BAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Assignment.Entities\Assignment.Entities.csproj">
+      <Project>{c82d202b-a781-45d3-84c6-a9c8ae2bbaba}</Project>
+      <Name>Assignment.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

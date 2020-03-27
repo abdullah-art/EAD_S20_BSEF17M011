@@ -49,6 +49,7 @@
             this.button1.TabIndex = 5;
             this.button1.Text = "Log Out";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label_users
             // 
@@ -81,6 +82,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(645, 303);
             this.dataGridView1.TabIndex = 3;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Column1
             // 
@@ -137,6 +139,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "admin_home_form";
             this.Text = "Admin Home";
+            this.Load += new System.EventHandler(this.admin_home_form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

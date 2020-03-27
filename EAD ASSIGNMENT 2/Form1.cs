@@ -19,7 +19,7 @@ namespace EAD_ASSIGNMENT_2
 
         private void btn_newUser_Click(object sender, EventArgs e)
         {
-            signup_form sf = new signup_form();
+            signup_form sf = new signup_form(null, 0);
             sf.ShowDialog();
         }
 

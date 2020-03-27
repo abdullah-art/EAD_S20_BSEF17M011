@@ -87,6 +87,7 @@
             this.button1.TabIndex = 37;
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_login
             // 
@@ -97,6 +98,7 @@
             this.btn_login.TabIndex = 36;
             this.btn_login.Text = "Login";
             this.btn_login.UseVisualStyleBackColor = true;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
             // textBox_password
             // 
@@ -106,6 +108,8 @@
             this.textBox_password.Size = new System.Drawing.Size(178, 24);
             this.textBox_password.TabIndex = 35;
             this.textBox_password.UseSystemPasswordChar = true;
+            this.textBox_password.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox_password_MouseDown);
+            this.textBox_password.MouseUp += new System.Windows.Forms.MouseEventHandler(this.textBox_password_MouseUp);
             // 
             // textBox_login
             // 

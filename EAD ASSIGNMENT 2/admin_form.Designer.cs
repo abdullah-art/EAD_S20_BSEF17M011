@@ -45,6 +45,7 @@
             this.button1.TabIndex = 35;
             this.button1.Text = "Cancel";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_alogin
             // 
@@ -55,6 +56,7 @@
             this.btn_alogin.TabIndex = 34;
             this.btn_alogin.Text = "Login";
             this.btn_alogin.UseVisualStyleBackColor = true;
+            this.btn_alogin.Click += new System.EventHandler(this.btn_alogin_Click);
             // 
             // textBox_apassword
             // 
