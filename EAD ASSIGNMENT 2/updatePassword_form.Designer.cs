@@ -42,6 +42,7 @@
             this.btn_update.TabIndex = 8;
             this.btn_update.Text = "Update";
             this.btn_update.UseVisualStyleBackColor = true;
+            this.btn_update.Click += new System.EventHandler(this.btn_update_Click);
             // 
             // textBox_password
             // 
@@ -51,6 +52,8 @@
             this.textBox_password.Size = new System.Drawing.Size(163, 24);
             this.textBox_password.TabIndex = 7;
             this.textBox_password.UseSystemPasswordChar = true;
+            this.textBox_password.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox_password_MouseDown);
+            this.textBox_password.MouseUp += new System.Windows.Forms.MouseEventHandler(this.textBox_password_MouseUp);
             // 
             // label1
             // 

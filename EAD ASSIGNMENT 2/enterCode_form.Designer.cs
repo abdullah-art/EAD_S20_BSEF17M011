@@ -28,38 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.label2 = new System.Windows.Forms.Label();
             this.btn_confirm = new System.Windows.Forms.Button();
             this.textBox_code = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label2.Location = new System.Drawing.Point(71, 139);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(167, 19);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Code will expire in 15mins";
+            // 
             // btn_confirm
             // 
             this.btn_confirm.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_confirm.Location = new System.Drawing.Point(117, 168);
+            this.btn_confirm.Location = new System.Drawing.Point(119, 175);
             this.btn_confirm.Name = "btn_confirm";
             this.btn_confirm.Size = new System.Drawing.Size(77, 28);
-            this.btn_confirm.TabIndex = 5;
+            this.btn_confirm.TabIndex = 6;
             this.btn_confirm.Text = "Confirm";
             this.btn_confirm.UseVisualStyleBackColor = true;
             // 
             // textBox_code
             // 
             this.textBox_code.Font = new System.Drawing.Font("Comic Sans MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_code.Location = new System.Drawing.Point(73, 106);
+            this.textBox_code.Location = new System.Drawing.Point(75, 99);
             this.textBox_code.Name = "textBox_code";
             this.textBox_code.Size = new System.Drawing.Size(163, 24);
-            this.textBox_code.TabIndex = 4;
+            this.textBox_code.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(113, 52);
+            this.label1.Location = new System.Drawing.Point(115, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 23);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 4;
             this.label1.Text = "Enter Code";
             // 
             // enterCode_form
@@ -68,18 +93,23 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(309, 248);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_confirm);
             this.Controls.Add(this.textBox_code);
             this.Controls.Add(this.label1);
             this.Name = "enterCode_form";
             this.Text = "Enter Reset Code";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.enterCode_form_FormClosing);
+            this.Load += new System.EventHandler(this.enterCode_form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_confirm;
         private System.Windows.Forms.TextBox textBox_code;
         private System.Windows.Forms.Label label1;

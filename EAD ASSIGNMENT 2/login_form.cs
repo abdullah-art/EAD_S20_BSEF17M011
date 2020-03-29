@@ -65,5 +65,65 @@ namespace EAD_ASSIGNMENT_2
         {
             textBox_password.UseSystemPasswordChar = false;
         }
+
+        private void btn_reset_Click(object sender, EventArgs e)
+        {
+            String email = textBox_resetEmail.Text.Trim();
+            bool emailFlag = true;
+            if (String.IsNullOrEmpty(email))
+            {
+                MessageBox.Show("Please fill out the field first!");
+                emailFlag = false;
+            }
+            else
+            {
+                try
+                {
+                    var eMailValidator = new System.Net.Mail.MailAddress(email);
+                }
+                catch (FormatException ex)
+                {
+                    emailFlag = false;
+                    MessageBox.Show("Invalid Email!");
+                }
+            }
+
+            if (emailFlag)
+            {
+                int count = UserBO.validateUserWithEmail(email);
+                if (count == 1)
+                {
+                    int resetCode = AdminBO.RandomCodeGenerator();
+                    bool isSent = AdminBO.sendEmail(email, "Password Reset Code", String.Format("Your code is {0}", resetCode.ToString()));
+                    if (isSent)
+                    {
+
+                        var form = Application.OpenForms["Form1"];
+                        if (form != null)
+                        {
+                            form.Hide();
+                        }
+                        this.Close();
+                        enterCode_form enterCode_Form;
+                        var eform = Application.OpenForms["enterCode_form"];
+                        if (eform == null)
+                        {
+                            enterCode_Form = new enterCode_form(resetCode, email);
+                            enterCode_Form.Show();
+                        }
+                        else
+                        {
+                            eform.Show();
+                        }
+
+                    }
+                }
+                else
+                {
+                    textBox_resetEmail.Text = "";
+                    MessageBox.Show("No such email exist in our record!Kindly re-enter your email");
+                }
+            }
+        }
     }
 }
