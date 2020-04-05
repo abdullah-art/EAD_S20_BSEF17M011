@@ -25,29 +25,7 @@ namespace EAD_ASSIGNMENT_2
             InitializeComponent();
         }
 
-        private void btn_confirm_Click(object sender, EventArgs e)
-        {
 
-            String code = textBox_code.Text.Trim();
-            if (String.IsNullOrEmpty(code))
-            {
-                MessageBox.Show("Please out the field!");
-            }
-            else
-            {
-                if (reset_code == Int32.Parse(code))
-                {
-                    flag = false;
-                    updatePassword_form password_Form = new updatePassword_form(user_email);
-                    this.Close();
-                    password_Form.Show();
-                }
-                else
-                {
-                    MessageBox.Show("You are entering wrong code!");
-                }
-            }
-        }
 
         private void textBox_code_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -64,7 +42,7 @@ namespace EAD_ASSIGNMENT_2
         private void timer1_Tick(object sender, EventArgs e)
         {
             tik++;
-            if (tik == 30 && flag)
+            if (tik == 900 && flag)
             {
                 timer1.Stop();
                 var form = Application.OpenForms["Form1"];
@@ -91,6 +69,35 @@ namespace EAD_ASSIGNMENT_2
         {
             var form = Application.OpenForms["Form1"];
             form.Show();
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_confirm_Click(object sender, EventArgs e)
+        {
+
+            String code = textBox_code.Text.Trim();
+            if (String.IsNullOrEmpty(code))
+            {
+                MessageBox.Show("Please out the field!");
+            }
+            else
+            {
+                if (reset_code == Int32.Parse(code))
+                {
+                    flag = false;
+                    updatePassword_form password_Form = new updatePassword_form(user_email);
+                    this.Close();
+                    password_Form.Show();
+                }
+                else
+                {
+                    MessageBox.Show("You are entering wrong code!");
+                }
+            }
         }
     }
 }

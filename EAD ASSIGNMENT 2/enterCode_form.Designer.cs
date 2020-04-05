@@ -57,6 +57,7 @@
             this.label2.Size = new System.Drawing.Size(167, 19);
             this.label2.TabIndex = 7;
             this.label2.Text = "Code will expire in 15mins";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btn_confirm
             // 
@@ -67,6 +68,7 @@
             this.btn_confirm.TabIndex = 6;
             this.btn_confirm.Text = "Confirm";
             this.btn_confirm.UseVisualStyleBackColor = true;
+            this.btn_confirm.Click += new System.EventHandler(this.btn_confirm_Click);
             // 
             // textBox_code
             // 
