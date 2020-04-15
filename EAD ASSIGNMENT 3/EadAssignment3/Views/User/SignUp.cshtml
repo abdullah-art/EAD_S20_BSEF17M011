@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+@section heading{
+    <h2 class="active"> Sign Up </h2>
+}
+
+@section fields{
+    <input type="text" id="password" class="fadeIn second" name="username" placeholder="Username">
+    <input type="text" id="login" class="fadeIn third" name="login" placeholder="Login ID">
+    <input type="text" id="password" class="fadeIn fourth" name="password" placeholder="Password">
+    <input type="text" id="password" class="fadeIn fifth" name="cpassword" placeholder="Confirm Password">
+
+    <input type="submit" class="fadeIn sixth" value="Sign Up">
+}
+
+@section footer{
+    <a class="underlineHover" href="@Url.Content("~/User/Login")">Already have an account?</a>
+}
+
