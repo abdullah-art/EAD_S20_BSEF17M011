@@ -132,6 +132,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\home.css" />
     <Content Include="Content\layout.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -167,6 +168,8 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Views\User\SignUp.cshtml" />
+    <Content Include="Views\User\Home.cshtml" />
+    <Content Include="Views\Shared\_HomeLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -189,6 +192,10 @@
     <ProjectReference Include="..\Assignment.BAL\Assignment.BAL.csproj">
       <Project>{326d864c-0595-4a6e-a2ee-9a0f91531f29}</Project>
       <Name>Assignment.BAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Assignment.Entities\Assignment.Entities.csproj">
+      <Project>{8a09eb1b-2cfb-4e1b-9794-41aa7f428875}</Project>
+      <Name>Assignment.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

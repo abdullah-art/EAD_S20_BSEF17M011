@@ -33,6 +33,9 @@ namespace EadAssignment3
             bundles.Add(new StyleBundle("~/Content/layout").Include(
                       "~/Content/layout.css"
                      ));
+            bundles.Add(new StyleBundle("~/Content/home").Include(
+                     "~/Content/home.css"
+                    ));
         }
     }
 }

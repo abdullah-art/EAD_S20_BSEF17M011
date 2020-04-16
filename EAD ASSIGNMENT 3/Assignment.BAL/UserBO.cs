@@ -1,4 +1,5 @@
 ﻿using Assignment.DAL;
+using Assignment.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,10 @@ namespace Assignment.BAL
         public static bool validateUser(String login, String password)
         {
             return UserDAO.validateUser(login, password);
+        }
+        public static int save(UserDTO user)
+        {
+            return UserDAO.save(user);
         }
     }
 }

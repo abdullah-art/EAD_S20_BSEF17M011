@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{326D864C-0595-4A6E-A2EE-9A0F91531F29}</ProjectGuid>
+    <ProjectGuid>{8A09EB1B-2CFB-4E1B-9794-41AA7F428875}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Assignment.BAL</RootNamespace>
-    <AssemblyName>Assignment.BAL</AssemblyName>
+    <RootNamespace>Assignment.Entities</RootNamespace>
+    <AssemblyName>Assignment.Entities</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -42,17 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserBO.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Assignment.DAL\Assignment.DAL.csproj">
-      <Project>{1b45b12e-7c32-40ed-9215-46bba90068eb}</Project>
-      <Name>Assignment.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Assignment.Entities\Assignment.Entities.csproj">
-      <Project>{8a09eb1b-2cfb-4e1b-9794-41aa7f428875}</Project>
-      <Name>Assignment.Entities</Name>
-    </ProjectReference>
+    <Compile Include="UserDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
