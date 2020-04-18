@@ -14,5 +14,9 @@ namespace Assignment.BAL
         {
             return FolderDAO.getFolders(uid, pfid);
         }
+        public static FolderDTO createFolder(String child, int uid, int parentFolder)
+        {
+            return FolderDAO.createFolder(child, uid, parentFolder);
+        }
     }
 }

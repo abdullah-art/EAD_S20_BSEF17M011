@@ -15,12 +15,14 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="~/Content/materialize.min.css" media="screen,projection" />
 
-    @RenderSection("script1", false)
+    @RenderSection("onLoad", false)
 </head>
 <body>
     <script type="text/javascript" src="~/Scripts/materialize.min.js"></script>
     @RenderSection("createFolders",false)
     @RenderSection("borders", false)
+    @RenderSection("doubleClick",false)
+    @RenderSection("back",false)
     @RenderBody()
 
 <div class="container-fluid">
@@ -29,7 +31,8 @@
             <a href="@Url.Content("~/User/Home")" style="text-decoration:none;" class="brand-logo center">My Drive</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a class=" modal-trigger" style="text-decoration:none;" href="#modal1">Create Folder</a></li>
-                <li><a href="#" style="text-decoration:none;">Logout</a></li>
+                <li id="backBtn"><a class=" modal-trigger" style="text-decoration:none;" href="#">Back</a></li>
+                <li><a href="@Url.Content("~/User/Logout")" style="text-decoration:none;">Logout</a></li>
             </ul>
         </div>
     </nav>
@@ -46,18 +49,21 @@
         </div>
     </div>
 
+
     <div class="image-container">
         <img src="~/Content/Images/back.png" class="img responsive-img" />
     </div>
 
-    <div class="flex-container">
+
+
+    <div id="div-1" style="text-align:center">
+        <p id="p1" style="font-weight:bold"></p>
+    </div>
+
+    <div class="flex-container center">
     </div>
 
 </div>
-
-   
-
-    
     @RenderSection("modalToggle", false);
 </body>
 </html>

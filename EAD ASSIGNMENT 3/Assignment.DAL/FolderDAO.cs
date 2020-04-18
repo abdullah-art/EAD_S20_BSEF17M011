@@ -24,21 +24,28 @@ namespace Assignment.DAL
             using (ConnectionMySql connection = new ConnectionMySql())
             {
                 var reader = connection.ExcueteReader(query);
-                while(reader.Read())
+                if (reader != null)
                 {
-                    FolderDTO folder = new FolderDTO();
-                    folder.folderId = reader.GetInt32(0);
-                    folder.folderName = reader.GetString(1);
-                    if(pfid==0)
+                    while (reader.Read())
                     {
-                        folder.parentFolderId = 0;
+                        FolderDTO folder = new FolderDTO();
+                        folder.folderId = reader.GetInt32(0);
+                        folder.folderName = reader.GetString(1);
+                        if (pfid == 0)
+                        {
+                            folder.parentFolderId = 0;
+                        }
+                        else
+                        {
+                            folder.parentFolderId = reader.GetInt32(2);
+                        }
+                        folder.id = reader.GetInt32(3);
+                        foldersList.Add(folder);
                     }
-                    else
-                    {
-                        folder.parentFolderId = reader.GetInt32(2);
-                    }
-                    folder.id = reader.GetInt32(3);
-                    foldersList.Add(folder);
+                }
+                else
+                {
+                    foldersList = null;
                 }
                 return foldersList;
             }
@@ -50,6 +57,9 @@ namespace Assignment.DAL
             String query = "";
             String query1 = "";
             FolderDTO folder = new FolderDTO();
+            folder.folderName = child;
+            folder.parentFolderId = parentFolder;
+            folder.id = uid;
             if(parentFolder==0)
             {
                 query = String.Format("SELECT * FROM folders where folderName='{0}' and parentFolderId is NULL", child);
@@ -66,29 +76,28 @@ namespace Assignment.DAL
                 }
                 else
                 {
-                    if(parentFolder==0)
+                    using (ConnectionMySql connection1 = new ConnectionMySql())
                     {
-                        query1 = String.Format("INSERT INTO folders (folderName,id) VALUES ('{0}','{1}')", child, uid);
-                    }
-                    else{
-                        query1 = String.Format("INSERT INTO folders (folderName,parentFolderId,id) VALUES ('{0}','{1}','{2}')", child,parentFolder,uid);
-                    }
-
-                    int retValue = connection.ExcueteQuery(query1);
-                    if(retValue==1)
-                    {
-                        String sql= "SELECT * FROM folders ORDER BY folderId DESC LIMIT 1";
-                        var reader1 = connection.ExcueteReader(sql);
-                        if(reader.Read())
+                        if (parentFolder == 0)
                         {
-                            folder.folderId = reader1.GetInt32(0);
-                            folder.folderName = reader1.GetString(1);
-                            folder.parentFolderId = reader1.GetInt32(2);
-                            folder.id = reader1.GetInt32(3);
+                            query1 = String.Format("INSERT INTO folders (folderName,id) VALUES ('{0}','{1}')", child, uid);
                         }
-                        return folder;
+                        else
+                        {
+                            query1 = String.Format("INSERT INTO folders (folderName,parentFolderId,id) VALUES ('{0}','{1}','{2}')", child, parentFolder, uid);
+                        }
+
+                        int retValue = connection1.ExcueteQuery(query1);
+
+                        if (retValue == 1)
+                        {
+                            String sql = "SELECT folderId FROM eadproject.folders ORDER BY folderId DESC LIMIT 1";
+                            var result = connection1.ExcueteScalar(sql);
+                            int id = Int32.Parse(result.ToString());
+                            folder.folderId = id;
+                            return folder;
+                        }
                     }
-                  
                 }
             }
 

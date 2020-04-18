@@ -43,9 +43,18 @@ namespace EadAssignment3.Controllers
         [HttpPost]
         public ActionResult CreateFolders(String child,int uid,int parentFolder)
         {
+            int id = 0;
+            bool flag = false; 
+            FolderDTO folder = FolderBO.createFolder(child, uid, parentFolder);
+            if(folder!=null)
+            {
+                id = folder.folderId;
+                flag = true;
+            }
             var data = new
             {
-                success = true
+                success = flag,
+                folderId = id
             };
             return Json(data,JsonRequestBehavior.AllowGet);
         }

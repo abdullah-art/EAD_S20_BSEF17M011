@@ -17,6 +17,10 @@ button:hover{
     background:white !important;
 }
 
+button{
+    text-transform:none !important;
+}
+
 .current {
     background: #00B0FF !important;
 }
@@ -24,7 +28,7 @@ button:hover{
 .modal {
     background: rgba(253,254,254,0) !important;
     width: 50% !important;
-    height: 33% !important;
+    height: 40% !important;
     position: absolute !important;
     top: 50% !important;
     left: 50% !important;
@@ -42,8 +46,8 @@ button:hover{
 .flex-container > div > button {
     background: #00B0FF;
     color:white;
-    width: 150px;
-    height:60px;
+    width: 165px;
+    height:62px;
     border-radius:5px;
     word-wrap: break-word;
     margin:5px;
@@ -54,3 +58,12 @@ button:hover{
     display: flex;
     flex-wrap: wrap;
 }
+
+#back {
+    display: flex;
+    flex-flow: row-reverse;
+}
+
+    #back > button {
+        background: #00B0FF;
+    }

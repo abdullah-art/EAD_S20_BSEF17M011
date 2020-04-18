@@ -48,7 +48,11 @@ namespace EadAssignment3.Controllers
             {
                 flag = false;
             }
-            user.id = id;
+            else
+            {
+                user.id = id;
+                SessionManager.User = user;
+            }
             var data = new
             {
                 success = flag
@@ -67,6 +71,13 @@ namespace EadAssignment3.Controllers
             {
                 return Redirect("~/User/Login");
             }
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            SessionManager.ClearSession();
+            return Redirect("~/User/Login");
         }
     }
 }
