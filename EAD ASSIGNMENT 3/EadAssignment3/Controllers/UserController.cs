@@ -1,5 +1,6 @@
 ﻿using Assignment.BAL;
 using Assignment.Entities;
+using EadAssignment3.Securtiy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,10 +20,16 @@ namespace EadAssignment3.Controllers
         [HttpPost]
         public ActionResult ValidateUser(String Login,String Password)
         {
-            bool result = UserBO.validateUser(Login, Password);
+            UserDTO user = UserBO.validateUser(Login, Password);
+            bool flag = false;
+            if (user!=null)
+            {
+                SessionManager.User = user;
+                flag = true;
+            }
             var data = new
             {
-               success=result
+               success=flag
             };
             return Json(data, JsonRequestBehavior.AllowGet);
         }
@@ -52,7 +59,14 @@ namespace EadAssignment3.Controllers
         [HttpGet]
         public ActionResult Home()
         {
-            return View();
+            if(SessionManager.IsValidUser)
+            {
+                return View();
+            }
+            else
+            {
+                return Redirect("~/User/Login");
+            }
         }
     }
 }

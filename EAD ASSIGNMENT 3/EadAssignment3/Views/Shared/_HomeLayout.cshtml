@@ -8,66 +8,56 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/home")
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-    <title>_HomeLayout</title>
+    @Styles.Render("~/Content/css")
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="~/Content/materialize.min.css" media="screen,projection" />
+
+    @RenderSection("script1", false)
 </head>
 <body>
+    <script type="text/javascript" src="~/Scripts/materialize.min.js"></script>
+    @RenderSection("createFolders",false)
+    @RenderSection("borders", false)
     @RenderBody()
-    <div class="container-flex c1">
-        <div id="div">
-            <h2>Welcome</h2>
+
+<div class="container-fluid">
+    <nav style="background:#00B0FF">
+        <div class="nav-wrapper">
+            <a href="@Url.Content("~/User/Home")" style="text-decoration:none;" class="brand-logo center">My Drive</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class=" modal-trigger" style="text-decoration:none;" href="#modal1">Create Folder</a></li>
+                <li><a href="#" style="text-decoration:none;">Logout</a></li>
+            </ul>
         </div>
+    </nav>
 
-
-        <div class="container">
-            <h2>Modal Example</h2>
-            <button type="button" class="btn b1" data-toggle="modal" data-target="#myModal">
-                CREATE FOLDER
-            </button>
-
-            <div class="modal md" id="myModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-
-
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-
-                        <div class="modal-body">
-                            <span style="color: #00b0ff; ">FOLDER NAME</span>
-                            <div>
-                                <input type="text" name="child" id="childId">
-                                <p style="color:red;" id="ip"></p>
-                            </div>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button class="btn" name="createbtn" id="createbtn">CREATE</button>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
+    <div id="modal1" class="modal">
+        <div class="modal-content" style="text-align:center">
+            <h4 style="color: #00b0ff; ">FOLDER NAME</h4>
+            <input type="text" name="child" id="childId" style="color:white">
+            <p style="color:red; font-weight:bold" id="ip"></p>
         </div>
+        <div class="modal-footer">
+            <button class="modal-action waves-effect waves-blue btn blue lighten-1" style="margin-right:7px;" id="createbtn">Create</button>
+            <button class="modal-action modal-close waves-effect waves-red btn red lighten-1 btnClose">Close</button>
+        </div>
+    </div>
 
-        <div id="div-1">
-            <p id="p1" style="color:green;"></p>
-        </div>
-        <div id="div-2">
-            <p id="p2" style="color:red;"></p>
-        </div>
+    <div class="image-container">
+        <img src="~/Content/Images/back.png" class="img responsive-img" />
     </div>
 
     <div class="flex-container">
     </div>
+
+</div>
+
+   
+
+    
+    @RenderSection("modalToggle", false);
 </body>
 </html>

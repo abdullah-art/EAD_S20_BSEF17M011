@@ -24,6 +24,11 @@
                         success: function (response) {
                             if (!response.success) {
                                 $("#password").val("");
+                                 $("#error").text("Incorrect login or password!");
+                                    setTimeout(() => {
+                                        const elem = $("#error").text("");
+                                     }, 2000);
+                                    return false;
                             }
                             else {
                                 window.location.href="@Url.Content("~/User/Home")";

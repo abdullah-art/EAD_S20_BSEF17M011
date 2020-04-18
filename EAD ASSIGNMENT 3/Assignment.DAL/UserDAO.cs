@@ -9,18 +9,26 @@ namespace Assignment.DAL
 {
     public static class UserDAO
     {
-        public static bool validateUser(String login, String password)
+        public static UserDTO validateUser(String login, String password)
         {
             String query = String.Format("SELECT * FROM eadproject.user where login='{0}' and password='{1}'", login, password);
             using (ConnectionMySql connection = new ConnectionMySql())
             {
+                UserDTO user = new UserDTO();
                 var reader = connection.ExcueteReader(query);
-                if (reader.Read())
+                if(reader.Read())
                 {
-                    return true;
+                    user.id = reader.GetInt32(0);
+                    user.login = reader.GetString(1);
+                    user.name = reader.GetString(2);
+                    user.password = reader.GetString(3);
                 }
+                else
+                {
+                    user = null;
+                }
+                return user;
             }
-            return false;
         }
 
         public static int save(UserDTO user)

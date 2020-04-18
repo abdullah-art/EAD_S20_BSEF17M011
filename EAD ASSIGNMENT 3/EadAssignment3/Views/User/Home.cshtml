@@ -1,8 +1,111 @@
 ﻿
 @{
-    ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 
-<h2>Home</h2>
+
+
+@section script1{
+    <script>
+        let folder=0;
+        let bool = true;
+        $(document).ready(function () {
+            $('.modal').modal();
+            var data = new FormData();
+            data.append("uid", @EadAssignment3.Securtiy.SessionManager.User.id);
+            data.append("parentFolderId", 0)
+            console.log(data);
+            var settings = {
+                type: "POST",
+                url: "@Url.Content("~/Home/GetFolders")",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (response) {
+                     let div=document.createElement("div");
+                    for (let i = 0; i < response.folders.length; i++) {
+                        let ele = document.createElement("button");
+                        ele.className="btn";
+                        ele.setAttribute("folderId", response.folders[i].folderId);
+                        ele.innerText = response.folders[i].folderName;
+                        div.appendChild(ele);
+                    }
+                    $(".flex-container").append(div);
+                },
+                error: function (error) {
+                    alert("error occured");
+                }
+            };
+            $.ajax(settings);
+        });
+    </script>
+}
+
+@section borders{
+    <script>
+        $(document).ready(function () {
+            $(".flex-container").on("click", ".btn", function () {
+                if (bool) {
+                    $(this).closest(".flex-container").find(".current").css("border", "0px");
+                    $(this).css("border", "3px groove #1C6EA4").addClass("current");
+                    bool = false;
+                }
+                else {
+                    $(this).css("border", "0px")
+                    bool = true;
+                }
+            })
+        })
+    </script>
+}
+
+@section modalToggle{
+    <script>
+      $(document).ready(function () {
+            $('.modal').modal({
+                onCloseEnd() {
+                    $("#childId").val("");
+                }
+            });
+        });
+    </script>
+}
+
+@section createFolders{
+    <script>
+        $(document).ready(function () {
+            $("#createbtn").on("click", function () {
+                let child = $("#childId").val();
+                if (child == "") {
+                    let inputMsg = "Please fill the input field!";
+                    $("#ip").text(inputMsg);
+                    setTimeout(() => {
+                        $("#ip").html("");
+                    }, 2000);
+                }
+                else {
+                     $(".btnClose").click();
+                }
+                var data = new FormData();
+                data.append("child", child);
+                data.append("uid",@EadAssignment3.Securtiy.SessionManager.User.id);
+                data.append("parentFolder", folder);
+                var settings = {
+                    type: "POST",
+                    url: "@Url.Content("~/Home/CreateFolders")",
+                    contentType: false,
+                    processData: false,
+                    data: data,
+                    success: function (response) {
+
+                    },
+                    error: function () {
+
+                    }
+                };
+            });
+        });
+    </script>
+    
+    }
 

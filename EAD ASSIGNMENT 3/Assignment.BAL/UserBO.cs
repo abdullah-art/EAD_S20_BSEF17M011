@@ -10,7 +10,7 @@ namespace Assignment.BAL
 {
     static public class UserBO
     {
-        public static bool validateUser(String login, String password)
+        public static UserDTO validateUser(String login, String password)
         {
             return UserDAO.validateUser(login, password);
         }
